@@ -1,9 +1,35 @@
-<!DOCTYPE html>
-<html lang="es" class="h-100">
-<?php include 'components/head.php'; ?>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kayubo - Soluciones Innovadoras">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>Kayubo - Soluciones Innovadoras</title>
+    <style>
+        :root {
+            --primary-color: #4361ee;
+            --success-color: #4cc9f0;
+            --dark-bg: #1a1a1a;
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --navbar-height: 70px;
+        }
+        body {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #0d0d0d 100%);
+            color: #f8f9fa;
+            padding-top: var(--navbar-height);
+            min-height: 100vh;
+        }
+        .custom-navbar { backdrop-filter: blur(10px); background: rgba(0, 0, 0, 0.8); border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .floating-card {
+            background: var(--card-bg);
+            border-radius: 20px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s ease;
+        }
+        .floating-card:hover { transform: translateY(-5px); }
 
-
-/* En tu archivo style.css */
+        /* En tu archivo style.css */
 .custom-navbar {
     backdrop-filter: blur(10px);
     background: rgba(0, 0, 0, 0.8);
@@ -432,136 +458,6 @@
                 transform: none;
             }
         }
-    </style>
+    
     </style>
 </head>
-<body class="d-flex flex-column h-100 bg-dark text-white">
-
-<header>
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top custom-navbar">
-        <div class="container">
-            <a class="navbar-brand fw-bold fs-3" href="inicio.php" aria-label="Kayubo - Volver al inicio">
-                Kayubo
-            </a>
-            
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" 
-                    data-bs-target="#navbarNav" aria-controls="navbarNav" 
-                    aria-expanded="false" aria-label="Menú de navegación">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="inicio.php">Inicio</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="servicio.php">Servicios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="precios.php">Precios</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="contacto.php">Contacto</a>
-                    </li>
-                </ul>
-            </div>
-        </div>
-    </nav>
-</header>
-
-<main class="flex-grow-1">
-    <section class="py-5" aria-labelledby="main-heading">
-        <div class="container mt-5 pt-5">
-            <div class="row justify-content-center">
-                <div class="col-lg-10 col-xl-8 text-center">
-                    <h1 id="main-heading" class="display-4 fw-bold mb-4">
-                        Título Principal Descriptivo
-                    </h1>
-                    
-                    <div class="floating-card p-4 p-md-5 shadow-lg" role="region" aria-label="Contenido principal">
-                        <p class="lead fs-4 mb-0">
-                            El contenido de tu documento Word irá en este espacio, manteniendo el 
-                            estilo visual de tu marca. Aquí puedes destacar tus servicios principales 
-                            o mensaje clave.
-                        </p>
-                        
-                        <!-- Opcional: Call to Action -->
-                        <div class="mt-4 pt-3">
-                            <a href="contacto.php" class="btn btn-primary btn-lg px-4 py-2">
-                                Contáctanos Ahora
-                            </a>
-                        </div>
-                    </div>
-                    
-                    <!-- Opcional: Sección adicional -->
-                    <div class="mt-5 pt-4">
-                        <h2 class="h3 mb-4">¿Por qué elegirnos?</h2>
-                        <div class="row g-4 justify-content-center">
-                            <div class="col-md-4">
-                                <div class="p-3">
-                                    <div class="fs-1 mb-3">🚀</div>
-                                    <h3 class="h5">Innovación</h3>
-                                    <p>Soluciones modernas y eficientes.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3">
-                                    <div class="fs-1 mb-3">💎</div>
-                                    <h3 class="h5">Calidad</h3>
-                                    <p>Productos y servicios de alta calidad.</p>
-                                </div>
-                            </div>
-                            <div class="col-md-4">
-                                <div class="p-3">
-                                    <div class="fs-1 mb-3">🤝</div>
-                                    <h3 class="h5">Soporte</h3>
-                                    <p>Atención personalizada 24/7.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-</main>
-
-<!-- PIE DE PÁGINA -->
-<?php include 'footer.php'; ?>
-
-<script>
-    // Año actual dinámico para el footer
-    document.getElementById('current-year').textContent = new Date().getFullYear();
-    
-    // Smooth scroll para navegación interna
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const href = this.getAttribute('href');
-            if (href.startsWith('#')) {
-                e.preventDefault();
-                const target = document.querySelector(href);
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
-            }
-        });
-    });
-    
-    // Mejorar navegación con teclado
-    document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape') {
-            const openMenu = document.querySelector('.navbar-collapse.show');
-            if (openMenu) {
-                const toggler = document.querySelector('.navbar-toggler');
-                toggler?.click();
-            }
-        }
-    });
-</script>
-
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
-        crossorigin="anonymous" defer></script>
-</body>
-</html>

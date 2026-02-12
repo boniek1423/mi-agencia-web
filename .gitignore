@@ -1,2 +1,23 @@
 echo "node_modules" >> .gitignore
 echo ".env" >> .gitignore
+# Dependencias (Se instalan en el servidor, no se suben)
+node_modules/
+
+# Variables de entorno (¡SECRETOS!)
+.env
+.env.local
+.env.production
+
+# Archivos del Sistema
+.DS_Store
+Thumbs.db
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Carpetas de construcción
+dist/
+build/
+.vercel/
