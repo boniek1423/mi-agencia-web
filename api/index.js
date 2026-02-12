@@ -1,7 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
-const path = require('path'); // Importante para las rutas de archivos
+const path = require('path');
 const app = express();
 
 // 1. Conexión a Base de Datos
@@ -9,7 +9,7 @@ mongoose.connect(process.env.MONGODB_URI)
   .then(() => console.log("🔥 Conectado a MongoDB Atlas"))
   .catch(err => console.error("❌ Error de conexión:", err));
 
-// 2. Definición del Modelo (Lead de Cliente)
+// 2. Modelo
 const Proyecto = mongoose.model('Proyecto', new mongoose.Schema({
     cliente: String,
     email: String,
@@ -20,7 +20,9 @@ const Proyecto = mongoose.model('Proyecto', new mongoose.Schema({
 
 // 3. Middlewares
 app.use(express.json());
-app.use(express.static(path.join(__dirname, 'public'))); 
+
+// CORRECCIÓN: '..' sube un nivel para encontrar /public desde /api
+app.use(express.static(path.join(__dirname, '..', 'public'))); 
 
 // 4. Rutas de la API
 app.post('/api/cotizar', async (req, res) => {
@@ -33,9 +35,10 @@ app.post('/api/cotizar', async (req, res) => {
     }
 });
 
-// 5. Ruta Principal (Sirve tu index.html)
+// 5. Ruta Principal
+// CORRECCIÓN: '..' sube un nivel para encontrar el index.html
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
 });
 
 // 6. Exportar para Vercel
